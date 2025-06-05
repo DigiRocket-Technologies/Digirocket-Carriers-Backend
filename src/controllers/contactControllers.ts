@@ -8,20 +8,23 @@ interface ContactUsRequestBody {
   course?: string;
 }
 
-export async function contactUs(req: Request, res: Response):Promise<void> {
+export async function contactUs(req: Request, res: Response): Promise<void> {
+  console.log("req reached");
   try {
     const { name, email, phone } = req.body;
 
     if (!email || !name || !phone) {
-     res.status(200).json({ success: false, message: "Please provide all details" });
-     return ;
+      res
+        .status(200)
+        .json({ success: false, message: "Please provide all details" });
+      return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValid = emailRegex.test(email);
 
     if (!isValid) {
       res.status(200).json({ success: false, message: "Enter a proper email" });
-      return 
+      return;
     }
 
     const subject = "New Lead from SS Prodigy Website";
@@ -146,17 +149,21 @@ export async function contactUs(req: Request, res: Response):Promise<void> {
     });
   } catch (error: any) {
     console.error("Email sending error:", error);
-    res.status(500).json({ message: "Failed to send email", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Failed to send email", error: error.message });
   }
 }
 
-export async function bookDemo(req: Request, res: Response):Promise<void> {
+export async function bookDemo(req: Request, res: Response): Promise<void> {
   try {
     const { name, email, phone, course } = req.body;
 
     if (!email || !name || !phone || !course) {
-       res.status(200).json({ success: false, message: "Please provide all details" });
-       return;
+      res
+        .status(200)
+        .json({ success: false, message: "Please provide all details" });
+      return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -164,7 +171,7 @@ export async function bookDemo(req: Request, res: Response):Promise<void> {
 
     if (!isValid) {
       res.status(200).json({ success: false, message: "Enter a proper email" });
-      return ;
+      return;
     }
 
     const subject = "New Lead from SS Prodigy Website";
@@ -294,6 +301,8 @@ export async function bookDemo(req: Request, res: Response):Promise<void> {
     });
   } catch (error: any) {
     console.error("Email in bookdemo controller:", error);
-    res.status(500).json({ message: "Failed to send email", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Failed to send email", error: error.message });
   }
 }
