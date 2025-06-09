@@ -1,9 +1,20 @@
 
+
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model WorkshopUser {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  phone     String 
+  stripeId  String?  // Stripe customer ID (optional)
+  createdAt DateTime @default(now())
 }
