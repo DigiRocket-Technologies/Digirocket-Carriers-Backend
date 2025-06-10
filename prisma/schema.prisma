@@ -11,7 +11,7 @@ datasource db {
 
 model WorkshopUser {
   id        String   @id @default(uuid())
-  email     String   @unique
+  email     String   
   name      String
   phone     String 
   stripeId  String?  // Stripe customer ID (optional)
