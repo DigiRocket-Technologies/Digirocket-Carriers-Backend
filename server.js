@@ -16,7 +16,7 @@ app.use('/api/v1/webhook', express.raw({ type: 'application/json' }), webhookRou
 app.use(express.json());
 
 const corsOptions = {
-  origin: "http://localhost:5173", // Replace with your allowed origin
+  origin: process.env.FRONTEND_URL, // Replace with your allowed origin
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };

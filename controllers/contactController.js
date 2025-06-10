@@ -6,18 +6,17 @@ export async function contactUs(req,res) {
     const { name, email, phone } = req.body;
 
     if (!email || !name || !phone) {
-      res
+      return res
         .status(200)
         .json({ success: false, message: "Please provide all details" });
-      return;
+      
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValid = emailRegex.test(email);
 
     if (!isValid) {
-      res.status(200).json({ success: false, message: "Enter a proper email" });
-      return;
+      return res.status(200).json({ success: false, message: "Enter a proper email" });
     }
 
     const subject = "New Lead from SS Prodigy Website";
@@ -142,9 +141,9 @@ export async function contactUs(req,res) {
     });
   } catch (error) {
     console.error("Email sending error:", error);
-    res
+    return res
       .status(500)
-      .json({ message: "Failed to send email", error: error.message });
+      .json({ success:false,message: "Failed to send email", error: error.message });
   }
 }
 
@@ -154,17 +153,17 @@ export async function bookDemo(req,res) {
 
     if (!email || !name || !phone || !course) {
       res
-        .status(200)
+        return res.status(400)
         .json({ success: false, message: "Please provide all details" });
-      return;
+     
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValid = emailRegex.test(email);
 
     if (!isValid) {
-      res.status(200).json({ success: false, message: "Enter a proper email" });
-      return;
+     return res.status(400).json({ success: false, message: "Enter a proper email" });
+      
     }
 
     const subject = "New Lead from SS Prodigy Website";
@@ -296,7 +295,7 @@ export async function bookDemo(req,res) {
     console.error("Email in bookdemo controller:", error);
     res
       .status(500)
-      .json({ message: "Failed to send email", error: error.message });
+      .json({success:false, message: "Failed to send email", error: error.message });
   }
 }
 
