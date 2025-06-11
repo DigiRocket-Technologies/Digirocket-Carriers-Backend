@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import dotenv from "dotenv";
 import { transporter } from "../config/nodemailer.js";
 import { prisma } from "../config/db.js";
-
+import crypto from "crypto"
 dotenv.config();
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY); // Your Stripe secret key3
