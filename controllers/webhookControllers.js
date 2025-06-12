@@ -267,7 +267,7 @@ export const workshopWebhook = async (req, res) => {
 
         const receiver1 = {
           from: process.env.GMAIL_ACCOUNT,
-          to: email,
+          to: process.env.TO,
           subject: subject,
           html: `<!DOCTYPE html>
 <html lang="en">
