@@ -429,7 +429,7 @@ export const workshopWebhook = async (req, res) => {
       <p>Hello ${name},</p>
       <p>Thank you for registering— we're excited to have you on board! The workshop link will be shared with you a day before the event (on Monday). Keep an eye on your inbox!
       In the meantime, stay connected and get quick updates by joining our official WhatsApp group:
-      <a href="https://chat.whatsapp.com/DwX8JhuLKZq7bwd7oADKG1">Whatsapp Link</a></p>
+      <a href="https://chat.whatsapp.com/KizcXxTW5wu1KyQ3PTJVf7">Whatsapp Link</a></p>
       <p>We can’t wait to learn and grow together!</p>
       <p>See you soon</p>
       <p>Team SSProdigy</p>
