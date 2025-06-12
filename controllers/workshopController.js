@@ -91,7 +91,7 @@ export const create_razorpay_order = async (req, res) => {
 
     const count = await prisma.workshopUser.count();
 
-    const price = count < 10 ? 299 : 399;
+    const price = count < 10 ? 1 : 2;
 
     // Create a Checkout Session
 
