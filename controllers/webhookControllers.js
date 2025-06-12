@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import dotenv from "dotenv";
 import { transporter } from "../config/nodemailer.js";
 import { prisma } from "../config/db.js";
-import crypto from "crypto"
+import crypto from "crypto";
 dotenv.config();
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY); // Your Stripe secret key3
@@ -236,9 +236,7 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_KEY;
 
 // For razorpay
 
-
 export const workshopWebhook = async (req, res) => {
-
   try {
     const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
     const receivedSignature = req.headers["x-razorpay-signature"];
@@ -251,7 +249,6 @@ export const workshopWebhook = async (req, res) => {
       const payload = JSON.parse(req.body.toString());
 
       if (payload.event === "payment.captured") {
-
         const payment = payload.payload.payment.entity;
         const { email, name, phone } = payment?.notes;
 
@@ -430,10 +427,13 @@ export const workshopWebhook = async (req, res) => {
 
     <div class="message">
       <p>Hello ${name},</p>
-      <p>Thank you for registering. We have received your details and will soon send you the meeting link.</p>
-      <p>If you have any questions, feel free to reach out.</p>
+      <p>Thank you for registering— we're excited to have you on board! The workshop link will be shared with you a day before the event (on Monday). Keep an eye on your inbox!
+      In the meantime, stay connected and get quick updates by joining our official WhatsApp group:
+      <a href="https://chat.whatsapp.com/DwX8JhuLKZq7bwd7oADKG1">Whatsapp Link</a></p>
+      <p>We can’t wait to learn and grow together!</p>
+      <p>See you soon</p>
+      <p>Team SSProdigy</p>
     </div>
-
     <div class="footer">
       <p>This email was sent automatically. Please do not reply to this email.</p>
     </div>
@@ -451,7 +451,6 @@ export const workshopWebhook = async (req, res) => {
       }
 
       console.log("Unhandled event");
-
     } else {
       return res.status(400).send("Invalid signature");
     }
@@ -464,4 +463,3 @@ export const workshopWebhook = async (req, res) => {
     });
   }
 };
-
